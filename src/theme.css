@@ -162,6 +162,15 @@ body {
   color: var(--graphite);
 }
 
+.auth__field {
+  display: grid;
+  gap: 7px;
+}
+
+.auth__password {
+  position: relative;
+}
+
 .auth__panel input {
   width: 100%;
   border: 1px solid var(--rule);
@@ -171,6 +180,39 @@ body {
   letter-spacing: 0;
   text-transform: none;
   font-size: 14px;
+}
+
+.auth__password input {
+  padding-right: 48px;
+}
+
+.auth__eye {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--graphite);
+  cursor: pointer;
+}
+
+.auth__eye:hover {
+  color: var(--ink);
+}
+
+.auth__eye:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.auth__eye svg {
+  width: 18px;
+  height: 18px;
 }
 
 .auth__panel input:focus-visible {

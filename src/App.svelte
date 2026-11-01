@@ -19,6 +19,7 @@
   let name = "";
   let email = "";
   let password = "";
+  let showPassword = false;
   let authBusy = false;
   let authError = "";
 
@@ -73,6 +74,7 @@
       name = "";
       email = "";
       password = "";
+      showPassword = false;
     } catch (error) {
       authError = error?.message || "Something went wrong. Try again.";
     } finally {
@@ -220,16 +222,41 @@
           Email
           <input type="email" bind:value={email} autocomplete="email" required />
         </label>
-        <label>
-          Password
-          <input
-            type="password"
-            bind:value={password}
-            autocomplete={mode === "signin" ? "current-password" : "new-password"}
-            minlength="8"
-            required
-          />
-        </label>
+        <div class="auth__field">
+          <label for="password">Password</label>
+          <div class="auth__password">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              bind:value={password}
+              autocomplete={mode === "signin" ? "current-password" : "new-password"}
+              minlength="8"
+              required
+            />
+            <button
+              class="auth__eye"
+              type="button"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-pressed={showPassword}
+              title={showPassword ? "Hide password" : "Show password"}
+              on:click={() => (showPassword = !showPassword)}
+            >
+              {#if showPassword}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 3l18 18" />
+                  <path d="M10.6 5.7A10.9 10.9 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17.3 17.3 0 0 1-2.4 3.2" />
+                  <path d="M6.4 7.5A17.6 17.6 0 0 0 2.5 12S6 18.5 12 18.5a10.7 10.7 0 0 0 4.7-1.1" />
+                  <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" />
+                </svg>
+              {:else}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+                  <circle cx="12" cy="12" r="2.75" />
+                </svg>
+              {/if}
+            </button>
+          </div>
+        </div>
 
         {#if authError}<p class="auth__error" role="alert">{authError}</p>{/if}
 
@@ -243,6 +270,7 @@
         type="button"
         on:click={() => {
           mode = mode === "signin" ? "signup" : "signin";
+          showPassword = false;
           authError = "";
         }}
       >
