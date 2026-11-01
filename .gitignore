@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vercel/
+.pnpm-store/
+.vite/
+*.local
+.env
+.env.*
+.DS_Store

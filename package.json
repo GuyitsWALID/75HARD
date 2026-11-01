@@ -11,12 +11,11 @@
     "test": "node --test"
   },
   "dependencies": {
-    "@sveltejs/vite-plugin-svelte": "latest",
-    "convex": "latest",
-    "motion": "latest",
-    "svelte": "latest",
-    "vite": "latest"
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "convex": "1.49.0",
+    "motion": "14.9.0",
+    "svelte": "5.57.3",
+    "vite": "8.3.5"
   },
   "devDependencies": {}
 }
-
