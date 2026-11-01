@@ -106,3 +106,123 @@ body {
     height: 36px;
   }
 }
+
+.boot {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--graphite);
+}
+
+.masthead--auth {
+  grid-template-columns: 1fr auto;
+}
+
+.auth {
+  display: grid;
+  justify-items: start;
+  padding: clamp(56px, 8vw, 110px) clamp(20px, 4vw, 64px) 80px;
+}
+
+.auth__panel {
+  width: min(460px, 100%);
+  border-top: 1px solid var(--ink);
+  padding-top: 28px;
+}
+
+.auth__panel h1 {
+  font: 900 clamp(44px, 7vw, 76px)/0.86 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+
+.auth__copy {
+  color: var(--graphite);
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 380px;
+  margin: 0 0 34px;
+}
+
+.auth__panel form {
+  display: grid;
+  gap: 16px;
+}
+
+.auth__panel label {
+  display: grid;
+  gap: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 9px;
+  color: var(--graphite);
+}
+
+.auth__panel input {
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  color: var(--ink);
+  padding: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 14px;
+}
+
+.auth__panel input:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.auth__submit {
+  border: 0;
+  background: var(--ink);
+  color: var(--white);
+  padding: 14px 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.auth__submit:hover {
+  background: var(--graphite);
+}
+
+.auth__submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.auth__switch {
+  border: 0;
+  background: none;
+  padding: 22px 0 0;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.auth__error {
+  border: 1px solid var(--alert);
+  color: var(--alert);
+  padding: 10px 12px;
+  font-size: 12px;
+  margin: 0;
+}
+
+.notice {
+  margin: 0 0 24px;
+}
+
+@media (max-width: 680px) {
+  .auth {
+    padding-top: 44px;
+  }
+}

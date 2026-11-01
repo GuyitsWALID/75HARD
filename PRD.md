@@ -10,7 +10,7 @@ Give one person a calm, unmistakable daily scoreboard for completing the officia
 2. See all 75 days as a wall-chart calendar.
 3. Open a day card.
 4. Check the five required tasks and attach that day's progress photo.
-5. Return later and find the state preserved on the same device.
+5. Return later and find the state synced to the account.
 
 ## Requirements
 
@@ -18,7 +18,8 @@ Give one person a calm, unmistakable daily scoreboard for completing the officia
 - Show completed, current, future, and missed states without hiding any day.
 - Each day opens a focused detail dialog.
 - Track the official tasks: diet, two 45-minute workouts (one outside), one gallon of plain water, 10 pages of nonfiction/self-development reading, and a progress photo.
-- Store tracker state and photos locally in the browser.
+- Require an email and password account before using the tracker.
+- Store tracker state and photos privately in the user's account.
 - Allow changing the start date without losing entries.
 - Allow exporting a JSON backup and resetting all data behind confirmation.
 - Work from phone size through desktop and support keyboard navigation.
@@ -30,11 +31,11 @@ A day is complete only when all five checks are complete and a photo is stored. 
 
 ## Out of scope
 
-Accounts, cloud storage, notifications, coaching, social sharing, calorie/workout logging, and configurable habits.
+Notifications, coaching, social sharing, calorie/workout logging, and configurable habits.
 
 ## Acceptance criteria
 
-- Reloading preserves checks, dates, notes, and photos.
+- Reloading and signing in on another device restores checks, dates, notes, and photos.
 - Day dates are calculated consistently across daylight-saving changes.
 - A photo can be added, previewed, replaced, and removed.
 - Progress totals update immediately.
