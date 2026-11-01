@@ -1,0 +1,108 @@
+:root {
+  color-scheme: light;
+  --future: #f8f8f6;
+  --rail: #dddddd;
+  --rail-complete: #444444;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  color: #f5f5f2;
+  background: #111111;
+  --paper: #111111;
+  --white: #181818;
+  --ink: #f5f5f2;
+  --graphite: #aaa9a4;
+  --rule: #353535;
+  --alert: #df6c61;
+  --future: #141414;
+  --rail: #3b3b3b;
+  --rail-complete: #aaaaaa;
+}
+
+body {
+  background: var(--paper);
+}
+
+.masthead__controls {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.day-card.future:not(.complete) {
+  background: var(--future);
+}
+
+.task-rail i {
+  background: var(--rail);
+}
+
+.complete .task-rail i {
+  background: var(--rail-complete);
+}
+
+.complete .task-rail i.checked,
+.task.checked .box::after,
+.dialog-foot {
+  color: var(--white);
+}
+
+.complete .task-rail i.checked {
+  background: var(--white);
+}
+
+:root[data-theme='dark'] .masthead {
+  background: rgba(17, 17, 17, 0.94);
+}
+
+:root[data-theme='dark'] .brand i {
+  color: #777777;
+}
+
+:root[data-theme='dark'] dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+@media (max-width: 680px) {
+  .masthead__controls {
+    gap: 8px;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+}

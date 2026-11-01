@@ -1,0 +1,22 @@
+{
+  "name": "75-hard-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "convex:dev": "convex dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@sveltejs/vite-plugin-svelte": "latest",
+    "convex": "latest",
+    "motion": "latest",
+    "svelte": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {}
+}
+
