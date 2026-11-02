@@ -11,6 +11,8 @@
 
   let selected = null;
   let dialog;
+  let resetDialog;
+  let resetBusy = false;
   let notice = "";
   let photoBusy = false;
   let noteTimer;
@@ -182,14 +184,23 @@
     URL.revokeObjectURL(link.href);
   }
 
+  function askReset() {
+    if (!resetDialog?.open) resetDialog?.showModal();
+  }
+
   async function resetAll() {
-    if (!confirm("Erase every check, note, and stored photo? This cannot be undone.")) return;
+    if (resetBusy) return;
+    resetBusy = true;
     try {
       await mutate(api.tracker.reset, {});
       selected = null;
       notice = "Tracker reset.";
+      resetDialog?.close();
     } catch {
+      resetDialog?.close();
       notice = "The tracker could not be reset.";
+    } finally {
+      resetBusy = false;
     }
   }
 </script>
@@ -354,7 +365,7 @@
     <div>
       <a href="https://andyfrisella.com/pages/75hard-info" target="_blank" rel="noreferrer">Official rules</a>
       <button on:click={exportData}>Export backup</button>
-      <button class="danger" on:click={resetAll}>Reset</button>
+      <button class="danger" on:click={askReset}>Reset</button>
       <button on:click={signOut}>Sign out</button>
     </div>
     <p class="disclaimer">Consult a physician before starting any fitness program. Do not begin if your healthcare provider advises against it.</p>
@@ -387,4 +398,28 @@
     <label class="notes">Daily note<textarea rows="3" maxlength="2000" placeholder="What made today hard?" value={selectedDay.entry.note} on:input={updateNote}></textarea></label>
     <div class="dialog-foot"><span>{countChecks(selectedDay.entry)} of 5 tasks checked</span><strong>{isComplete(selectedDay.entry) ? "DAY COMPLETE ✓" : "KEEP GOING"}</strong></div>
   {/if}
+</dialog>
+
+<dialog
+  bind:this={resetDialog}
+  class="confirm-dialog"
+  aria-labelledby="reset-title"
+  on:cancel={(event) => resetBusy && event.preventDefault()}
+>
+  <div class="dialog-head">
+    <div>
+      <p class="eyebrow">Permanent action</p>
+      <h2 id="reset-title">Reset?</h2>
+    </div>
+    <button class="close" type="button" on:click={() => resetDialog.close()} aria-label="Cancel reset" disabled={resetBusy}>x</button>
+  </div>
+  <div class="confirm-body">
+    <p>Every check, note, and stored photo will be erased, and your start date will be cleared. This cannot be undone.</p>
+  </div>
+  <div class="confirm-actions">
+    <button type="button" on:click={() => resetDialog.close()} disabled={resetBusy}>Keep my progress</button>
+    <button type="button" class="button-danger" on:click={resetAll} disabled={resetBusy}>
+      {resetBusy ? "Resetting." : "Reset everything"}
+    </button>
+  </div>
 </dialog>
